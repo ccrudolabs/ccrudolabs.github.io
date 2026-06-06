@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carlos Crudo | Cloud, DevOps, Seguridad e IA</title>
+    <meta
+      name="description"
+      content="Portal profesional de Carlos Crudo en GitHub Pages: GitHub Copilot Study Hub, DevSecOps Multicloud Blueprint, blog personal, LinkedIn y recursos tecnicos."
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #102033;
+        --muted: #5b6677;
+        --soft: #eef4f8;
+        --paper: #ffffff;
+        --line: #d9e3ea;
+        --navy: #0c233c;
+        --navy-deep: #071827;
+        --cyan: #00a6c8;
+        --cyan-soft: #9de5f5;
+        --green: #3aa76d;
+        --amber: #f0a83a;
+        --radius: 8px;
+        --shadow: 0 18px 48px rgba(12, 35, 60, 0.12);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #f7fafc;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(217, 227, 234, 0.82);
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 22px;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 14px 22px;
+      }
+
+      .brand {
+        display: grid;
+        gap: 2px;
+        text-decoration: none;
+      }
+
+      .brand strong {
+        font-size: 15px;
+        letter-spacing: 0;
+      }
+
+      .brand span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .nav-links a {
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+        padding: 8px 11px;
+        text-decoration: none;
+      }
+
+      .nav-links a:hover {
+        background: var(--soft);
+        color: var(--ink);
+      }
+
+      .hero {
+        min-height: 88vh;
+        display: grid;
+        align-items: end;
+        color: #ffffff;
+        background:
+          linear-gradient(90deg, rgba(12, 35, 60, 0.98), rgba(12, 35, 60, 0.7)),
+          radial-gradient(circle at 76% 22%, rgba(0, 166, 200, 0.34), transparent 34%),
+          linear-gradient(135deg, #071827, #0c233c 54%, #0d3b55);
+      }
+
+      .hero-inner,
+      .wrap {
+        width: min(1180px, calc(100% - 44px));
+        margin: 0 auto;
+      }
+
+      .hero-inner {
+        padding: 92px 0 66px;
+      }
+
+      .eyebrow,
+      .kicker {
+        color: var(--cyan-soft);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 900px;
+        margin: 18px 0 18px;
+        font-size: clamp(2.45rem, 7vw, 5.8rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .hero p {
+        max-width: 760px;
+        color: #d7e7ef;
+        font-size: clamp(1.02rem, 2vw, 1.24rem);
+        line-height: 1.65;
+      }
+
+      .hero-actions,
+      .inline-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      .btn {
+        align-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 999px;
+        display: inline-flex;
+        font-weight: 800;
+        gap: 8px;
+        min-height: 44px;
+        padding: 11px 16px;
+        text-decoration: none;
+      }
+
+      .btn.primary {
+        background: #ffffff;
+        color: var(--navy);
+      }
+
+      .btn.secondary {
+        color: #ffffff;
+      }
+
+      main {
+        overflow: hidden;
+      }
+
+      .section {
+        padding: 76px 22px;
+      }
+
+      .section.alt {
+        background: var(--paper);
+      }
+
+      .section-head {
+        display: grid;
+        gap: 10px;
+        max-width: 820px;
+        margin-bottom: 28px;
+      }
+
+      h2 {
+        font-size: clamp(1.9rem, 4vw, 3.2rem);
+        line-height: 1.06;
+        margin-bottom: 0;
+      }
+
+      h3 {
+        color: var(--navy);
+        font-size: 1.08rem;
+        line-height: 1.28;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+        line-height: 1.64;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      .span-4 { grid-column: span 4; }
+      .span-6 { grid-column: span 6; }
+      .span-12 { grid-column: 1 / -1; }
+
+      .card,
+      .callout {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 24px;
+      }
+
+      .metric {
+        border-left: 4px solid var(--cyan);
+      }
+
+      .metric strong {
+        display: block;
+        color: var(--navy);
+        font-size: 2.2rem;
+        line-height: 1;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .pill {
+        background: #e7f7fa;
+        border: 1px solid #bce9f1;
+        border-radius: 999px;
+        color: #075f70;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 7px 10px;
+      }
+
+      .project-card {
+        display: grid;
+        gap: 14px;
+        min-height: 280px;
+      }
+
+      .project-card .btn {
+        align-self: end;
+        background: var(--navy);
+        border-color: var(--navy);
+        color: #ffffff;
+        justify-self: start;
+      }
+
+      .callout {
+        background: var(--navy-deep);
+        color: #ffffff;
+      }
+
+      .callout h2,
+      .callout h3 {
+        color: #ffffff;
+      }
+
+      .callout p,
+      .callout li {
+        color: #d7e7ef;
+      }
+
+      .footer {
+        background: var(--navy-deep);
+        color: #ffffff;
+        padding: 42px 22px 34px;
+      }
+
+      .footer .wrap {
+        display: grid;
+        gap: 22px;
+      }
+
+      .footer-panel {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: minmax(260px, 1fr) minmax(0, 1fr);
+        align-items: center;
+      }
+
+      .footer h2 {
+        color: #ffffff;
+        font-size: clamp(1.55rem, 3vw, 2.35rem);
+        line-height: 1.08;
+      }
+
+      .footer p {
+        color: #c8d8e3;
+      }
+
+      .footer-links,
+      .footer-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .footer-link {
+        border: 1px solid rgba(157, 229, 245, 0.38);
+        border-radius: 999px;
+        color: #e6f8fc;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 9px 13px;
+        text-decoration: none;
+      }
+
+      .footer-meta {
+        border-top: 1px solid rgba(157, 229, 245, 0.18);
+        justify-content: space-between;
+        padding-top: 18px;
+      }
+
+      .footer-meta p {
+        margin: 0;
+      }
+
+      @media (max-width: 900px) {
+        .span-4,
+        .span-6 {
+          grid-column: 1 / -1;
+        }
+
+        .nav,
+        .footer-panel {
+          align-items: flex-start;
+          flex-direction: column;
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          min-height: 86vh;
+        }
+
+        .hero-inner {
+          width: min(100% - 28px, 1180px);
+          padding-bottom: 42px;
+        }
+
+        .section {
+          padding: 52px 14px;
+        }
+
+        .card,
+        .callout {
+          padding: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Navegacion principal">
+        <a class="brand" href="#inicio">
+          <strong>Carlos Crudo</strong>
+          <span>Cloud, DevOps, Seguridad, GitHub e IA</span>
+        </a>
+        <div class="nav-links">
+          <a href="#proyectos">Proyectos</a>
+          <a href="#perfil">Perfil</a>
+          <a href="https://carloscrudo.com/">Blog</a>
+          <a href="https://www.linkedin.com/in/carloscrudo/">LinkedIn</a>
+          <a href="https://github.com/ccrudolabs">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <p class="eyebrow">Portal profesional en GitHub Pages</p>
+        <h1>Carlos Crudo: Cloud, DevOps, seguridad y adopcion de IA con criterio enterprise.</h1>
+        <p>
+          Punto de entrada central para recursos tecnicos, laboratorios, study hubs, blueprints y
+          material profesional publicado en GitHub Pages, GitHub y el blog personal.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="https://ccrudolabs.github.io/copilot-workspace-starter/">GitHub Copilot Study Hub</a>
+          <a class="btn secondary" href="https://ccrudolabs.github.io/DevSecOps-Multicloud-Blueprint/">DevSecOps Blueprint</a>
+          <a class="btn secondary" href="https://carloscrudo.com/">Blog Carlos Crudo</a>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section class="section" id="proyectos">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Recursos principales</p>
+            <h2>Un mapa claro para estudiar, decidir y construir con buenas practicas.</h2>
+            <p>
+              El portal conecta recursos publicados como sitios estaticos y repositorios tecnicos,
+              con una identidad visual consistente y foco profesional.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="card project-card span-6">
+              <p class="kicker">GitHub Copilot Certification Study Hub</p>
+              <h3>GH-300 para profesionales IT que construyen con criterio.</h3>
+              <p>
+                Ruta de estudio con teoria, simulador, arquitectura 360, laboratorios, seguridad,
+                gobernanza, costos, ROI y adopcion enterprise de GitHub Copilot.
+              </p>
+              <div class="pill-row">
+                <span class="pill">GH-300</span>
+                <span class="pill">GitHub Copilot</span>
+                <span class="pill">Zero Trust</span>
+                <span class="pill">Laboratorios</span>
+              </div>
+              <a class="btn" href="https://ccrudolabs.github.io/copilot-workspace-starter/">Abrir Study Hub</a>
+            </article>
+            <article class="card project-card span-6">
+              <p class="kicker">DevSecOps Multicloud Blueprint</p>
+              <h3>Arquitectura segura para operar infraestructura multicloud.</h3>
+              <p>
+                Blueprint para seguridad, cumplimiento, CI/CD, IaC, ramas protegidas, gobierno de
+                repositorios y operacion en Azure, AWS y GCP.
+              </p>
+              <div class="pill-row">
+                <span class="pill">DevSecOps</span>
+                <span class="pill">Terraform</span>
+                <span class="pill">GitHub Actions</span>
+                <span class="pill">Multicloud</span>
+              </div>
+              <a class="btn" href="https://ccrudolabs.github.io/DevSecOps-Multicloud-Blueprint/">Abrir Blueprint</a>
+            </article>
+            <article class="card metric span-4">
+              <strong>Cloud</strong>
+              <p>Azure, Microsoft 365, GitHub, AWS, GCP, IoT y modernizacion de plataformas.</p>
+            </article>
+            <article class="card metric span-4">
+              <strong>DevOps</strong>
+              <p>CI/CD, IaC, automatizacion, ramas protegidas, seguridad de repositorios y trazabilidad.</p>
+            </article>
+            <article class="card metric span-4">
+              <strong>IA</strong>
+              <p>Adopcion responsable de Copilot, AI/ML, prompts, gobierno, seguridad y capacitacion.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="perfil">
+        <div class="wrap">
+          <div class="grid">
+            <article class="callout span-6">
+              <p class="kicker">Perfil profesional</p>
+              <h2>Experiencia senior orientada a resultados tecnicos y gobierno operativo.</h2>
+              <p>
+                Profesional IT con foco en DevOps, administracion de sistemas, cloud, IoT, Python,
+                AI/ML y gestion de datos; orientado a Azure, Microsoft 365, GitHub, seguridad,
+                automatizacion, modernizacion y gobierno de plataformas empresariales.
+              </p>
+            </article>
+            <article class="card span-6">
+              <p class="kicker">Como usar este portal</p>
+              <h2>Entrada unica para compartir en GitHub, LinkedIn y el blog.</h2>
+              <ul>
+                <li>Usar este enlace como portada principal: <strong>ccrudolabs.github.io</strong>.</li>
+                <li>Derivar a cada sitio tecnico segun el interes del visitante.</li>
+                <li>Mantener los repositorios con README, Pages, seguridad y protecciones consistentes.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <section class="footer-panel" aria-label="Contacto y trayectoria profesional">
+          <div>
+            <p class="kicker">Carlos Crudo</p>
+            <h2>Cloud, DevOps, seguridad e IA aplicada a plataformas reales.</h2>
+            <p>
+              Portal central para publicar material tecnico, rutas de estudio, blueprints y recursos
+              profesionales con trazabilidad en GitHub.
+            </p>
+          </div>
+          <div class="footer-links">
+            <a class="footer-link" href="https://carloscrudo.com/">Blog Carlos Crudo</a>
+            <a class="footer-link" href="https://www.linkedin.com/in/carloscrudo/">LinkedIn</a>
+            <a class="footer-link" href="https://github.com/ccrudolabs">GitHub</a>
+            <a class="footer-link" href="https://ccrudolabs.github.io/copilot-workspace-starter/">Study Hub</a>
+          </div>
+        </section>
+        <div class="footer-meta">
+          <p>&copy; Carlos Crudo. Portal profesional en GitHub Pages.</p>
+          <p>Aprendizaje, arquitectura y mejora continua para profesionales IT.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
